@@ -15,11 +15,13 @@ devise_for :admin, controllers: {
 
 # 会員側のルーティング設定
   scope module: :public do
-    
+    root to: 'homes#top'
+    get 'about' => 'homes#about'
   end
+  
 # 管理者側のルーティング設定
   namespace :admin do
-    
+
   end
 
 end
