@@ -13,6 +13,13 @@ devise_for :admin, controllers: {
 }
 # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-
+# 会員側のルーティング設定
+  scope module: :public do
+    
+  end
+# 管理者側のルーティング設定
+  namespace :admin do
+    
+  end
 
 end
