@@ -17,6 +17,13 @@ devise_for :admin, controllers: {
   scope module: :public do
     root to: 'homes#top'
     get 'about' => 'homes#about'
+    
+    get 'customers/my_page' => 'customers#show'
+    get 'customers/information/edit' => 'customers#edit'
+    patch 'customers/information' => 'customers#update'
+    get 'customers/unsubscribe' => 'customers#unsubscribe'
+    patch 'customers/reject_customer' => 'customers#reject_customer' 
+    
   end
   
 # 管理者側のルーティング設定

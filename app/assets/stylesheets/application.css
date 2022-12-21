@@ -40,6 +40,38 @@ h1 {
   padding-bottom : 30px;
 }
 
+/*topページ*/
+.main-image {
+  background-color: green;
+  height: 300px;
+  width: 100%;
+  margin-bottom: 200px;
+  text-align: center;
+  position: relative;
+}
+
+.main-image img {
+  width: 100%;
+  height: auto;
+}
+
+.main-image-text {
+  position: absolute;
+  font-size: 30px;
+  font-weight: 700;
+  font-family :Quicksand, sans-serif;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background-color: rgba( 0,0,0,0.5);
+  color: white;
+  top: 50%;
+  left: 50%;
+}
+
 /*aboutページ*/
 .about-message {
   margin-bottom: 50px;

@@ -50,9 +50,56 @@
             <% end %>
 
             <% if admin_signed_in? %>
+            <!--管理者側表示-->
+              <button type="button" class="btn btn-outline-secondary admin-buttom">
+                <li class="nav-item">
+                  <%= link_to "商品一覧", admin_items_path %>
+                </li>
+              </button>
+              <button type="button" class="btn btn-outline-secondary admin-buttom">
+                <li class="nav-item">
+                  <%= link_to "会員一覧", admin_customers_path %>
+                </li>
+              </button>
+              <button type="button" class="btn btn-outline-secondary admin-buttom">
+                <li class="nav-item">
+                  <%#= link_to "コメント一覧",  %>
+                </li>
+              </button>
+              <!--<button type="button" class="btn btn-outline-secondary admin-buttom">-->
+              <!--  <li class="nav-item">-->
+                  <%#= link_to "ジャンル一覧", admin_genres_path %>
+              <!--  </li>-->
+              <!--</button>-->
+              <button type="button" class="btn btn-outline-secondary admin-buttom">
+                <li class="nav-item">
+                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+                </li>
+              </button>
             <% end %>
 
             <% if customer_signed_in? %>
+            <!--会員がログインしているときに表示-->
+              <button type="button" class="btn btn-outline-secondary btn-sm">
+                <li class="nav-item">
+                  <%= link_to "マイページ", customers_my_page_path %>
+                </li>
+              </button>
+              <button type="button" class="btn btn-outline-secondary btn-sm">
+                <li class="nav-item">
+                  <%#= link_to "投稿一覧", %>
+                </li>
+              </button>
+              <button type="button" class="btn btn-outline-secondary btn-sm">
+                <li class="nav-item">
+                  <%#= link_to "いいね一覧", %>
+                </li>
+              </button>
+              <button type="button" class="btn btn-outline-secondary btn-sm">
+                <li class="nav-item">
+                  <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+                </li>
+              </button>
             <% end %>
 
           </ul>
