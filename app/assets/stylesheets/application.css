@@ -23,12 +23,13 @@ main {
 header {
   height : 60px;
   border-bottom: 1px solid black;
+  background-color: white;
 }
 
 footer {
   /*border-top : 1px solid black;*/
-  background-color: #FF9999;
-  height: 60px;
+  background-color: teal;
+  height: 30px;
   width: 100%;
   z-index: 9999;
   position: absolute;/*←絶対位置*/
@@ -74,9 +75,20 @@ h1 {
 
 /*aboutページ*/
 .about-message {
-  margin-bottom: 50px;
+  margin: 0 auto 50px auto;
+  max-width: 777px;
+
+}
+
+.about-message h3 {
+  margin-bottom: 30px;
 }
 
 .about-message div {
   margin-left: 15px;
+  padding-top: 15px;
+  padding-bottom: 5px;
+  padding-left: 15px;
+  border-radius: 10px;
+  background-color: rgba( 0, 128, 128, 0.1);
 }
