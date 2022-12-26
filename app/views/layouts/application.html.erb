@@ -26,6 +26,7 @@
 
             <% unless signed_in? %>
             <!--誰もログインしていないときに表示-->
+            <nav>
               <button type="button" class="btn btn-outline-secondary">
                 <li class="nav-item">
                   <%= link_to "About", about_path %>
@@ -46,10 +47,12 @@
                   <%= link_to "ログイン", new_customer_session_path %>
                 </li>
               </button>
+            </nav>
             <% end %>
 
             <% if admin_signed_in? %>
             <!--管理者側表示-->
+            <nav>
               <button type="button" class="btn btn-outline-secondary admin-buttom">
                 <li class="nav-item">
                   <%= link_to "商品一覧", admin_items_path %>
@@ -75,10 +78,12 @@
                   <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
                 </li>
               </button>
+            </nav>
             <% end %>
 
             <% if customer_signed_in? %>
             <!--会員がログインしているときに表示-->
+            <nav>
               <button type="button" class="btn btn-outline-secondary btn-sm">
                 <li class="nav-item">
                   <%= link_to "マイページ", customers_my_page_path %>
@@ -86,11 +91,12 @@
               </button>
               <button type="button" class="btn btn-outline-secondary btn-sm">
                 <li class="nav-item">
-                  <%#= link_to "投稿一覧", %>
+                  <%= link_to "投稿する", new_post_path %>
                 </li>
               </button>
               <button type="button" class="btn btn-outline-secondary btn-sm">
                 <li class="nav-item">
+                  ブックマーク
                   <%#= link_to "いいね一覧", %>
                 </li>
               </button>
@@ -99,6 +105,7 @@
                   <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
                 </li>
               </button>
+            </nav>
             <% end %>
 
           </ul>

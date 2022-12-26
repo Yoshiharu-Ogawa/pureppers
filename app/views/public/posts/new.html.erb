@@ -1,0 +1,33 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 sidebar"></div>
+    <div class="col-md-6">
+      <div class="container">
+        <div class="row">
+          <%= form_with model: @stock_post, url: posts_path, method: :post do |f| %>
+            <div>
+              <div class="row">
+                <h3 class="col-6">画像を選択してください</h3>
+                <%= f.file_field :image, accept: "image/*", class: "col-6" %>
+              </div>
+              <div class="row">
+                <h3>タイトルを入力してください</h3>
+                <%= f.text_field :posted_title, size: "28", placeholder: "タイトル" %>
+              </div>
+              <div class="row">
+                <h3>本文を入力してください</h3>
+                <%= f.text_area :posted_body, size: "31x5", placeholder: "ここに本文を記入します" %>
+              </div>
+              <%= f.hidden_field :customer_id, :value => current_customer.id %>
+              <div class="row">
+                <%= f.submit '新規登録', class: 'btn btn-success' %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 sidebar"></div>
+  </div>
+</div>

@@ -41,6 +41,12 @@ h1 {
   padding-bottom : 30px;
 }
 
+.sidebar {
+  border: 1px solid black;
+  background-color: yellow;
+  /*height: 100%;*/
+}
+
 /*topページ*/
 .main-image {
   background-color: green;
