@@ -3,6 +3,8 @@ class Public::CustomersController < ApplicationController
   def show
     @customer = current_customer
     @post = Post.new
+    @posts = Post.where(customer_id: current_customer.id)
+    # @posts = Post.all
   end
 
   def edit
