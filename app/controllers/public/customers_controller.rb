@@ -8,14 +8,26 @@ class Public::CustomersController < ApplicationController
   end
 
   def edit
-    @customer = current_customer
+    @customer_update = Customer.find(current_customer.id)
+    if @customer_update == current_customer
+      render :edit
+    else
+      redirect_to user_path(current_user)
+    end
   end
 
   #　会員情報の更新
   def update
     customer = current_customer
-    customer.update(customer_params)
-    redirect_to customers_my_page_path
+    if customer.update(customer_params)
+      flash[:notice] = "アカウント情報が更新されました"
+      redirect_to customers_my_page_path
+    else
+      flash[:notice] = "アカウント情報の更新に失敗しました"
+      @customer_update = Customer.find(current_customer.id)
+      render :edit
+    end
+
   end
 
   def unsubscribe
