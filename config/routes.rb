@@ -25,6 +25,8 @@ devise_for :admin, controllers: {
     get 'customers/unsubscribe' => 'customers#unsubscribe'
     patch 'customers/reject_customer' => 'customers#reject_customer'
 
+
+
     resources :posts, only: [:index, :show, :new, :edit, :create, :update]
 
   end
@@ -33,5 +35,7 @@ devise_for :admin, controllers: {
   namespace :admin do
 
   end
+
+  get 'search' => 'searches#search'
 
 end

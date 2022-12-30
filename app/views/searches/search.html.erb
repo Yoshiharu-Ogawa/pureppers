@@ -1,0 +1,24 @@
+<h2>Results index</h2>
+
+<table class="table table-hover table-inverse">
+  <!--検索対象モデルがCustomerの時 -->
+  <% if @range == "Customer" %>
+    <tbody>
+      <% @customers.each do |customer| %>
+        <tr>
+          <td><%= customer.account_name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% else %>
+    <!--検索対象モデルがCustomerではない時(= 検索対象モデルがPostの時) -->
+    <tbody>
+      <% @Posts.each do |pos| %>
+        <tr>
+          <td><%= pos.posted_title %></td>
+          <td><%= pos.posted_body %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% end %>
+</table>

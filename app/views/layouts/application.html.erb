@@ -106,10 +106,15 @@
                 </li>
               </button>
             </nav>
+            <nav style="display: inline-block;">
+            </nav>
             <% end %>
 
           </ul>
         </div>
+        <% if customer_signed_in? %>
+          <%= render 'public/shared/search.html.erb' %>
+        <% end %>
       </nav>
     </header>
 

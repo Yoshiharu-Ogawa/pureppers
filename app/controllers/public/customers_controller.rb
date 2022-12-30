@@ -8,12 +8,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def edit
-    @customer_update = Customer.find(current_customer.id)
-    if @customer_update == current_customer
-      render :edit
-    else
-      redirect_to user_path(current_user)
-    end
+    @customer_update = current_customer
   end
 
   #　会員情報の更新
@@ -44,7 +39,7 @@ class Public::CustomersController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit(:account_name, :email, :password, :password_confirmation)
+    params.require(:customer).permit(:account_name, :email, :password, :password_confirmation, :introduction)
   end
 
 end

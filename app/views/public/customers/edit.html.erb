@@ -15,7 +15,7 @@
         <% end %>
       </div>
 
-      <%= form_with model: @customer_update do |f| %>
+      <%= form_with model: @customer_update, url: customers_information_path do |f| %>
 
       <div class="form-group">
         <label for="user_Name">Name</label>
@@ -40,3 +40,5 @@
     </div>
   </div>
 </div>
+
+<%= link_to '退会する', customers_unsubscribe_path %>
