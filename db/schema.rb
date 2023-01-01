@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 2022_12_24_143807) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "account_name", null: false
+    t.string "name", null: false
     t.string "introduction"
     t.boolean "is_deleted", default: false
     t.index ["email"], name: "index_customers_on_email", unique: true
@@ -86,8 +86,8 @@ ActiveRecord::Schema.define(version: 2022_12_24_143807) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "customer_id", null: false
-    t.string "posted_title", null: false
-    t.text "posted_body", null: false
+    t.string "title", null: false
+    t.text "body", null: false
   end
 
   create_table "tag_posts", force: :cascade do |t|

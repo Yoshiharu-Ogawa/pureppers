@@ -5,8 +5,8 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.timestamps
       
       t.integer :customer_id, null: false
-      t.string :posted_title, null: false
-      t.text :posted_body, null: false
+      t.string :title, null: false
+      t.text :body, null: false
       
     end
   end

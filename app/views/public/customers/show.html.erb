@@ -8,7 +8,7 @@
         <tr></tr>
         <tr class="user-info">
           <th>name</th>
-          <th><%= current_customer.account_name %></th>
+          <th><%= current_customer.name %></th>
         </tr>
         <tr class="user-info">
           <th>introduction</th>
@@ -25,11 +25,11 @@
     <%= form_with model: @post do |f| %>
       <div class="form-group">
         <label for="book_title">Title</label>
-        <%= f.text_field :posted_title, class: 'form-control book_title' %>
+        <%= f.text_field :title, class: 'form-control book_title' %>
       </div>
       <div class="form-group">
         <label for="book_opinion">Opinion</label>
-        <%= f.text_area :posted_body, class: 'form-control book_body' %>
+        <%= f.text_area :body, class: 'form-control book_body' %>
       </div>
       <div class="form-group">
         <%= f.submit 'Create Stock!', class: 'btn btn-success' %>
@@ -51,10 +51,10 @@
             <tr>
               <td></td>
               <td>
-                <%= posts.posted_title %>
+                <%= posts.title %>
               </td>
               <td>
-                <%= posts.posted_body %>
+                <%= posts.body %>
               </td>
             </tr>
           <% end %>

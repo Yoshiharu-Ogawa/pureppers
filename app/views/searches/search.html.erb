@@ -6,7 +6,7 @@
     <tbody>
       <% @customers.each do |customer| %>
         <tr>
-          <td><%= customer.account_name %></td>
+          <td><%= customer.name %></td>
         </tr>
       <% end %>
     </tbody>
@@ -15,8 +15,8 @@
     <tbody>
       <% @Posts.each do |pos| %>
         <tr>
-          <td><%= pos.posted_title %></td>
-          <td><%= pos.posted_body %></td>
+          <td><%= pos.title %></td>
+          <td><%= pos.body %></td>
         </tr>
       <% end %>
     </tbody>
