@@ -1,8 +1,10 @@
 class Post < ApplicationRecord
 
-  has_many :bookmarks
-  has_many :tag_posts
-  has_many :comments
+  has_many :bookmarks, dependent: :destroy
+  has_many :post_tags, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  # thoroughを使うことで、post_tags経由でitemsにアクセスできるようになってます。
+  has_many :tags, through: :post_tags
   belongs_to :customer
 
   # 検索方法分岐

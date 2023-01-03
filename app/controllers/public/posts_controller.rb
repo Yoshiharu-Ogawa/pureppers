@@ -17,6 +17,7 @@ class Public::PostsController < ApplicationController
     stock_post.customer_id = current_customer.id
     if stock_post.save
       flash[:notice] = "新規投稿をしました"
+      # postのshowへリダイレクト
       redirect_to post_path(stock_post.id)
     else
       @stock_post = Post.find(stock_post.id)
