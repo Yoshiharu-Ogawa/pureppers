@@ -9,7 +9,14 @@ class Public::PostsController < ApplicationController
   end
 
   def show
-    @stock_post = Post.find(params[:id])
+    @post = Post.find(params[:id])
+    @customer = current_customer
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to posts_path
   end
 
   def create
@@ -40,8 +47,8 @@ class Public::PostsController < ApplicationController
 
 
   def edit
-    @stock_post_update = Post.find(params[:id])
-    if @stock_post_update.customer == current_customer
+    @post = Post.find(params[:id])
+    if @post.customer == current_customer
       render :edit
     else
       redirect_to posts_path
@@ -50,8 +57,13 @@ class Public::PostsController < ApplicationController
 
   private
 
+  # 複数のtag_idが渡ってくるので配列の形式で記述
   def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body, tag_ids: [])
   end
+
+  # def article_params
+  #   params.require(:article).permit(:body, tag_ids: [])
+  # end
 
 end

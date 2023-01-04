@@ -51,7 +51,9 @@
             <tr>
               <td></td>
               <td>
-                <%= posts.title %>
+                <%= link_to post_path(posts) do %>
+                  <%= posts.title %>
+                <% end %>
               </td>
               <td>
                 <%= posts.body %>
