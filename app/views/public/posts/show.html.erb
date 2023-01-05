@@ -38,4 +38,13 @@
   <div class="row">
     <%= image_tag @post.get_front_image(200,400) %>
   </div>
+  <div class="row">
+    <!--@postで１つの投稿を選出して、tags（Tag.allと同じ意味)で投稿に連なったタグをすべて表示する。-->
+    <h3>タグ:　</h3>
+    <% @post.tags.each do |tag| %>
+      <h3 style="margin-right: 20px;">
+        <%= tag.tag_name %>
+      </h3>
+    <% end %>
+  </div>
 </div>
