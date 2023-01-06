@@ -59,7 +59,7 @@ class Public::PostsController < ApplicationController
 
   # 複数のtag_idが渡ってくるので配列の形式で記述
   def post_params
-    params.require(:post).permit(:title, :body, tag_ids: [])
+    params.require(:post).permit(:title, :body, :front_image, tag_ids: [])
   end
 
   # def article_params
