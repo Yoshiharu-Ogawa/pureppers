@@ -13,9 +13,13 @@
   <% else %>
     <!--検索対象モデルがCustomerではない時(= 検索対象モデルがPostの時) -->
     <tbody>
-      <% @Posts.each do |pos| %>
+      <% @posts.each do |pos| %>
         <tr>
-          <td><%= pos.title %></td>
+          <td>
+            <%= link_to post_path(pos) do %>
+              <%= pos.title %>
+            <% end %>
+          </td>
           <td><%= pos.body %></td>
         </tr>
       <% end %>

@@ -27,7 +27,7 @@ devise_for :admin, controllers: {
 
 
 
-    resources :posts, only: [:index, :show, :new, :edit, :create, :update]
+    resources :posts, only: [:index, :show, :new, :edit, :create, :update, :destroy]
 
   end
 

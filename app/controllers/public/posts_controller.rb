@@ -16,7 +16,7 @@ class Public::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to posts_path
+    redirect_to customers_my_page_path
   end
 
   def create
@@ -43,6 +43,12 @@ class Public::PostsController < ApplicationController
       flash[:notice] = "投稿の更新に失敗しました。"
       render :edit
     end
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to posts_path
   end
 
 
