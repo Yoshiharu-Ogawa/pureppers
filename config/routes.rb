@@ -25,9 +25,9 @@ devise_for :admin, controllers: {
     get 'customers/unsubscribe' => 'customers#unsubscribe'
     patch 'customers/reject_customer' => 'customers#reject_customer'
 
-
-
     resources :posts, only: [:index, :show, :new, :edit, :create, :update, :destroy]
+
+    get 'bookmark' => 'bookmarks#index'
 
   end
 
