@@ -10,8 +10,8 @@
         </tr>
       <% end %>
     </tbody>
-  <% else %>
-    <!--検索対象モデルがCustomerではない時(= 検索対象モデルがPostの時) -->
+  <% elsif @range == "Post" %>
+    <!--検索対象モデルががPostの時 -->
     <tbody>
       <% @posts.each do |pos| %>
         <tr>
@@ -21,6 +21,24 @@
             <% end %>
           </td>
           <td><%= pos.body %></td>
+        </tr>
+      <% end %>
+    </tbody>
+    <!--検索対象が上記以外の場合（モデルがTag）の時-->
+  <% else %>
+    <tbody>
+      <% @tag_posts.each do |tag_post| %>
+        <tr>
+          <td>
+            <%= tag_post.title %>
+          </td>
+          <td>
+            <% tag_post.tags.each do |tag| %>
+              <td>
+                <%= tag.tag_name %>
+              </td>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>
