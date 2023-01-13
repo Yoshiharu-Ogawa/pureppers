@@ -18,7 +18,7 @@ class Customer < ApplicationRecord
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
 
-# 検索方法分岐
+# 検索方法分岐(%の位置で完全一致なのか部分一致なのか前方一致なのか後方一致なのか判別)
   def self.looks(search, word)
     if search == "perfect_match"
       @customer = Customer.where("name LIKE?", "#{word}")

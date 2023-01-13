@@ -9,6 +9,12 @@ class Post < ApplicationRecord
 
   has_one_attached :front_image
 
+  # bookmarked_by?(customer)を追加することで、
+  # 既にブックマークしているかを検証します。
+  def bookmarked_by?(customer)
+    bookmarks.where(customer_id: customer).exists?
+  end
+
   def get_front_image(width, height)
     unless front_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
