@@ -35,7 +35,8 @@ class Public::PostsController < ApplicationController
 
   def update
     @stock_post = Post.find(params[:id])
-    if @stock_post.update(params[:posted_title, :posted_body])
+    # if @stock_post.update(params[:posted_title, :posted_body])
+    if @stock_post.update(post_params)
       flash[:notice] = "投稿の更新が完了しました。"
       redirect_to posts_path
     else
