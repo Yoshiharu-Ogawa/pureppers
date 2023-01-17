@@ -29,6 +29,8 @@ devise_for :admin, controllers: {
 
       # postにネスト
       resource :bookmarks, only: [:create, :destroy]
+
+      resources :comments, only: [:create, :destroy]
     end
     get 'bookmarks' => 'bookmarks#index'
 

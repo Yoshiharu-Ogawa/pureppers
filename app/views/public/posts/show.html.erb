@@ -61,4 +61,40 @@
       </h3>
     <% end %>
   </div>
+
+  <!--コメント機能欄-->
+  <div class="comment-container">
+
+    <h3>コメントをする</h3>
+    <%#= form_with(model: [@post, @comment], url: post_comments_path, method: :post) do |f| %>
+    <%= form_with model:[@post, @comment] do |f| %>
+      <%= f.text_area :comment_content, placeholder: "コメントをここに記入", class: 'form-control' %>
+      <% f.hidden_field :post_id, value: @post.id %>
+      <%= f.submit 'コメントする', class: 'btn btn-success' %>
+    <% end %>
+
+    <h3>コメント一覧</h3>
+    <% @comments.each do |comment| %>
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <%= comment.customer.name %>
+            </td>
+            <td>
+              <%= comment.comment_content %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    <% end %>
+
+  </div>
+
 </div>

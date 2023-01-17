@@ -11,7 +11,11 @@ class Public::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @customer = @post.customer
+    @comments = @post.comments
+    @comment = current_customer.comments.new
   end
+
+
 
   def destroy
     @post = Post.find(params[:id])
