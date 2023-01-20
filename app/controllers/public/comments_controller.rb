@@ -2,7 +2,7 @@ class Public::CommentsController < ApplicationController
 
   def create
     @comment = current_customer.comments.new(comment_params)
-    @post = Post.find(post_id)
+    @post = Post.find(params[:post_id])
     @comment.post_id = @post.id
     @comment.save
     redirect_to post_path(@post)
@@ -10,6 +10,14 @@ class Public::CommentsController < ApplicationController
     # else
     #   redirect_back(fallback_location: posts_path(@post))  #同上
     # end
+  end
+
+  def destroy
+    # ルーティングをネストしている場合は引数2つ必要
+    comment = Comment.find_by(id: params[:id], post_id: params[:post_id])
+    comment.destroy
+    # 同じページをリダイレクト
+    redirect_to request.referer
   end
 
   private

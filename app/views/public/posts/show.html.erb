@@ -69,7 +69,7 @@
     <%#= form_with(model: [@post, @comment], url: post_comments_path, method: :post) do |f| %>
     <%= form_with model:[@post, @comment] do |f| %>
       <%= f.text_area :comment_content, placeholder: "コメントをここに記入", class: 'form-control' %>
-      <% f.hidden_field :post_id, value: @post.id %>
+      <%# f.hidden_field :post_id, value: @post.id %>
       <%= f.submit 'コメントする', class: 'btn btn-success' %>
     <% end %>
 
@@ -85,10 +85,19 @@
         <tbody>
           <tr>
             <td>
+              <%= image_tag comment.customer.get_profile_image(20,40) %>
+            </td>
+            <td>
               <%= comment.customer.name %>
             </td>
             <td>
               <%= comment.comment_content %>
+            </td>
+            <td>
+              <!--ルーティングをネストしている場合は引数2つ必要-->
+              <% if comment.customer == current_customer %>
+                <%= link_to 'Destroy', post_comment_path(comment.post.id, comment.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: 'btn btn-sm btn-danger' %>
+              <% end %>
             </td>
           </tr>
         </tbody>
