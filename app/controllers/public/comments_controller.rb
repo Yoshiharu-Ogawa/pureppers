@@ -19,6 +19,10 @@ class Public::CommentsController < ApplicationController
     # 同じページをリダイレクト
     redirect_to request.referer
   end
+  
+  def show
+    @comment = Comment.find_by(id: params[:id], post_id: params[:post_id])
+  end
 
   private
 

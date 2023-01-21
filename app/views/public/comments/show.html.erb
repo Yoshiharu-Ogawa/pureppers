@@ -1,0 +1,22 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-6">
+      <%= image_tag @comment.customer.get_profile_image(200,400) %>
+    </div>
+    <div class="col-6">
+      <%= @comment.customer.name %>
+    </div>
+  </div>
+
+  <div class="row">
+    <%= @comment.comment_content %>
+  </div>
+
+  <div class="row">
+    <%=link_to :back do %>
+      <h5>back</h5>
+    <% end %>
+  </div>
+
+</div>
