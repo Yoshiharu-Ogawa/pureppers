@@ -12,6 +12,7 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @customer = @post.customer
     @comments = @post.comments
+     #投稿詳細画面でコメントの投稿を行うので、formのパラメータ用にCommentオブジェクトを取得
     @comment = current_customer.comments.new
   end
 
