@@ -21,3 +21,8 @@ Tag.create([
     { tag_name: 'エネルギー' },
     { tag_name: 'その他'}
     ])
+
+Admin.create!(
+  email: 'gworijob@wrghtw24',
+  password: 'baorho42oi5hog89hs'
+  )

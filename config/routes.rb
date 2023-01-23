@@ -38,6 +38,12 @@ devise_for :admin, controllers: {
 
 # 管理者側のルーティング設定
   namespace :admin do
+    
+    root to: 'homes#top'
+    
+    resources :customers, only: [:index, :show, :edit, :update]
+    
+    resources :comments, only: [:index, :show, :destroy]
 
   end
 

@@ -55,12 +55,12 @@
             <nav>
               <button type="button" class="btn btn-outline-secondary admin-buttom">
                 <li class="nav-item">
-                  <%= link_to "商品一覧", admin_items_path %>
+                  <%= link_to 'ユーザー管理', admin_customers_path, method: :get %>
                 </li>
               </button>
               <button type="button" class="btn btn-outline-secondary admin-buttom">
                 <li class="nav-item">
-                  <%= link_to "会員一覧", admin_customers_path %>
+                  <%= link_to 'コメント一括管理', admin_comments_path, method: :get %>
                 </li>
               </button>
               <button type="button" class="btn btn-outline-secondary admin-buttom">
