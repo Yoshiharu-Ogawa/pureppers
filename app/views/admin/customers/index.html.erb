@@ -9,6 +9,7 @@
             <th>ユーザー名</th>
             <th>メールアドレス</th>
             <th>ステータス</th>
+            <th>DELETE</th>
           </tr>
         </thead>
         <tbody>
@@ -28,6 +29,9 @@
               <% else %>
                 <div class="text-secondary font-weight-bold">退会</div>
               <% end %>
+            </td>
+            <td>
+              <%= link_to "強制削除", admin_customer_path(customer.id), method: :delete, "data-confirm" => "このアカウントを削除しますか？", class: "btn btn-danger btn-sm" %>
             </td>
           </tr>
           <% end %>

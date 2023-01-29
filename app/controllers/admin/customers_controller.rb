@@ -15,7 +15,10 @@ class Admin::CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
   end
 
-  def update
+  def destroy
+    @customer = Customer.find(params[:id])
+    @customer.destroy
+    redirect_to request.referer
   end
 
 end
