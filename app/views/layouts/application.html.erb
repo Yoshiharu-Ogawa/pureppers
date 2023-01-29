@@ -29,59 +29,59 @@
 
             <% unless signed_in? %>
             <!--誰もログインしていないときに表示-->
-            <nav>
-              <button type="button" class="btn btn-outline-secondary">
+            <ul>
+              <!--<button type="button" class="btn btn-outline-secondary">-->
                 <li class="nav-item">
                   <%= link_to "About", about_path %>
                 </li>
-              </button>
-              <button type="button" class="btn btn-outline-secondary">
+              <!--</button>-->
+              <!--<button type="button" class="btn btn-outline-secondary">-->
                 <li class="nav-item">
                   <%= link_to "ゲストログイン（閲覧）", homes_guest_sign_in_path, method: :post %>
                 </li>
-              </button>
-              <button type="button" class="btn btn-outline-secondary">
+              <!--</button>-->
+              <!--<button type="button" class="btn btn-outline-secondary">-->
                 <li class="nav-item">
                   <%= link_to "新規登録", new_customer_registration_path %>
                 </li>
-              </button>
-              <button type="button" class="btn btn-outline-secondary">
+              <!--</button>-->
+              <!--<button type="button" class="btn btn-outline-secondary">-->
                 <li class="nav-item">
                   <%= link_to "ログイン", new_customer_session_path %>
                 </li>
-              </button>
-            </nav>
+              <!--</button>-->
+            </ul>
             <% end %>
 
             <% if admin_signed_in? %>
             <!--管理者側表示-->
-            <nav>
-              <button type="button" class="btn btn-outline-secondary admin-buttom">
+            <ul>
+              <!--<button type="button" class="btn btn-outline-secondary admin-buttom">-->
                 <li class="nav-item">
                   <%= link_to 'ユーザー管理', admin_customers_path, method: :get %>
                 </li>
-              </button>
-              <button type="button" class="btn btn-outline-secondary admin-buttom">
+              <!--</button>-->
+              <!--<button type="button" class="btn btn-outline-secondary admin-buttom">-->
                 <li class="nav-item">
                   <%= link_to 'コメント一括管理', admin_comments_path, method: :get %>
                 </li>
-              </button>
-              <button type="button" class="btn btn-outline-secondary admin-buttom">
+              <!--</button>-->
+              <!--<button type="button" class="btn btn-outline-secondary admin-buttom">-->
                 <li class="nav-item">
                   <%#= link_to "コメント一覧",  %>
                 </li>
-              </button>
+              <!--</button>-->
               <!--<button type="button" class="btn btn-outline-secondary admin-buttom">-->
               <!--  <li class="nav-item">-->
                   <%#= link_to "ジャンル一覧", admin_genres_path %>
               <!--  </li>-->
               <!--</button>-->
-              <button type="button" class="btn btn-outline-secondary admin-buttom">
+              <!--<button type="button" class="btn btn-outline-secondary admin-buttom">-->
                 <li class="nav-item">
                   <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
                 </li>
-              </button>
-            </nav>
+              <!--</button>-->
+            </ul>
             <% end %>
 
             <% if customer_signed_in? %>

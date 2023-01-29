@@ -1,4 +1,7 @@
-ここは投稿詳細画面
+<div class="alert alert-notice">
+  <!--×は特殊文字の&times;で指定-->
+  <%= flash[:notice] %><button type="button" class="close" data-dismiss="alert">&times;</button>
+</div>
 
 <div class="container">
   <div class="row">
@@ -10,9 +13,19 @@
             <tr>
               <!--ブックマーク登録機能-->
               <% if @post.bookmarked_by?(current_customer) %>
-                <td><%= link_to "ブックマークを外す", post_bookmarks_path(@post), method: :delete %></td>
+                <td>
+                  <%#= link_to "ブックマークを外す", post_bookmarks_path(@post), method: :delete %>
+                  <%= link_to post_bookmarks_path(@post), class: 'btn btn-outline-secondary btn-block', method: :delete do %>
+                    <i class="fas fa-bookmark"></i>
+                  <% end %>
+                </td>
               <% else %>
-                <td><%= link_to "ブックマーク", post_bookmarks_path(@post), method: :post %></td>
+                <td>
+                  <%#= link_to "ブックマーク", post_bookmarks_path(@post), method: :post %>
+                  <%= link_to post_bookmarks_path(@post), class: 'btn btn-outline-secondary btn-block', method: :post do %>
+                    <i class="far fa-bookmark"></i>
+                  <% end %>
+                </td>
               <% end %>
               <td>
                 <!--投稿者の名前-->

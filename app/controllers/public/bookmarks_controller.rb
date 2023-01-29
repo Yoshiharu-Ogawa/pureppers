@@ -13,6 +13,7 @@ class Public::BookmarksController < ApplicationController
     # その後customer_idにcurrent_customerを紐付け
     bookmark = @post.bookmarks.new(customer_id: current_customer.id)
     if bookmark.save
+      flash[:notice] = "ブックマークに登録しました"
       redirect_to request.referer
     else
       redirect_to request.referer
@@ -25,6 +26,7 @@ class Public::BookmarksController < ApplicationController
     # bookmark.present?を挟んでいるのは、２度押しのエラーを回避するため
     if bookmark.present?
         bookmark.destroy
+        flash[:notice] = "ブックマークが解除されました"
         redirect_to request.referer
     else
         redirect_to request.referer
