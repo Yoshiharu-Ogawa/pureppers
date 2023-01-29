@@ -12,16 +12,19 @@
 
   <body>
     <header class="fixed-top">
-      <nav class="navbar navbat-expand-md navbar-dark fixed-top bg-white;" style=" z-index: 9999; background-color: white;">
+      <nav class="navbar navbat-expand-md navbar-dark fixed-top bg-dark;" style=" z-index: 9999; background-color: black;">
         <div class="header-logo" style="border: 1px solid black; padding: 5px; margin-left: 5%;">
           <%= link_to 'PREPPERS!', root_path %>
         </div>
         <% if customer_signed_in? %>
-          <div>
+          <div style=" color: white;">
             ようこそ、<%= current_customer.name %>さん!
           </div>
         <% end %>
-        <div class="nav-button justify-content-end">
+        <button class="navbar-toggler" style="border: 1px solid white;" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse justify-content-end" id="navbarCollapse">
           <ul class="navbar-nav mr-auto flex-row">
 
             <% unless signed_in? %>
@@ -83,37 +86,39 @@
 
             <% if customer_signed_in? %>
             <!--会員がログインしているときに表示-->
-            <nav>
-              <button type="button" class="btn btn-outline-secondary btn-sm">
-                <li class="nav-item">
+            <!--<nav>-->
+            <ul>
+              <!--<button type="button" class="btn btn-outline-secondary btn-sm">-->
+                <li class="nav-item nav-link">
                   <%= link_to "マイページ", customers_my_page_path %>
                 </li>
-              </button>
-              <button type="button" class="btn btn-outline-secondary btn-sm">
-                <li class="nav-item">
+              <!--</button>-->
+              <!--<button type="button" class="btn btn-outline-secondary btn-sm">-->
+                <li class="nav-item nav-link">
                   <%= link_to "投稿する", new_post_path %>
                 </li>
-              </button>
-              <button type="button" class="btn btn-outline-secondary btn-sm">
-                <li class="nav-item">
+              <!--</button>-->
+              <!--<button type="button" class="btn btn-outline-secondary btn-sm">-->
+                <li class="nav-item nav-link">
                   <%= link_to "ブックマーク", bookmarks_path, method: :get %>
                 </li>
-              </button>
-              <button type="button" class="btn btn-outline-secondary btn-sm">
-                <li class="nav-item">
+              <!--</button>-->
+              <!--<button type="button" class="btn btn-outline-secondary btn-sm">-->
+                <li class="nav-item nav-link">
                   <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
                 </li>
-              </button>
-            </nav>
+              <!--</button>-->
+            </ul>
+            <!--</nav>-->
             <nav style="display: inline-block;">
             </nav>
             <% end %>
 
           </ul>
+          <% if customer_signed_in? %>
+            <%= render 'public/shared/search.html.erb' %>
+          <% end %>
         </div>
-        <% if customer_signed_in? %>
-          <%= render 'public/shared/search.html.erb' %>
-        <% end %>
       </nav>
     </header>
 

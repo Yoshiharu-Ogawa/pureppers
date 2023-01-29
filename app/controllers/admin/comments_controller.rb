@@ -1,5 +1,5 @@
 class Admin::CommentsController < ApplicationController
-  
+
     # before_action :authenticate_admin!
 
   def index
@@ -13,9 +13,9 @@ class Admin::CommentsController < ApplicationController
 
   def destroy
     # ルーティングをネストしている場合は引数2つ必要
-    comment = Comment.find_by(id: params[:id], post_id: params[:post_id])
+    # comment = Comment.find_by(id: params[:id], post_id: params[:post_id])
+    comment = Comment.find(params[:id])
     comment.destroy
-    # コメント一覧に飛ぶ
     redirect_to admin_comments_path
   end
 
