@@ -8,57 +8,119 @@
     <%#= render partial: 'books/user_info', locals: { user: @book.user, post_book: @book_n } %>
     <div class="col-md-8 offset-md-1">
       <h2>Book detail</h2>
-      <table class="table">
-        <tbody>
-            <tr>
-              <!--ブックマーク登録機能-->
-              <% if @post.bookmarked_by?(current_customer) %>
-                <td>
-                  <%#= link_to "ブックマークを外す", post_bookmarks_path(@post), method: :delete %>
-                  <%= link_to post_bookmarks_path(@post), class: 'btn btn-outline-secondary btn-block', method: :delete do %>
-                    <i class="fas fa-bookmark"></i>
-                  <% end %>
-                </td>
-              <% else %>
-                <td>
-                  <%#= link_to "ブックマーク", post_bookmarks_path(@post), method: :post %>
-                  <%= link_to post_bookmarks_path(@post), class: 'btn btn-outline-secondary btn-block', method: :post do %>
-                    <i class="far fa-bookmark"></i>
-                  <% end %>
-                </td>
-              <% end %>
-              <td>
-                <!--投稿者の名前-->
+      <div class="card">
+        <div class="card-header border-0 pd-0">
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center">
+              <div class="avatar avatar-story me-2">
                 <%= link_to customers_my_page_path do %>
                   <%= image_tag @customer.get_profile_image(100,100) %><br>
-                  <%= @customer.name %>
                 <% end %>
-              </td>
-              <td>
-                <!--投稿タイトル-->
-                <%= link_to post_path(@post) do %>
-                  <%= @post.title %>
+              </div>
+              <div>
+                <div class="nav nav-divider">
+                  <h6 class="nav-item card-title md-0">
+                    <%= link_to customers_my_page_path do %>
+                      <%= @customer.name %>
+                    <% end %>
+                  </h6>
+                  <span class="nav-item small">投稿からの時間</span>
+                </div>
+                <p class="md-0 small">
+                  <%= @customer.introduction %>
+                </p>
+              </div>
+            </div>
+            <div class="bookmark">
+              <!--ブックマーク登録機能-->
+              <% if @post.bookmarked_by?(current_customer) %>
+                <%#= link_to "ブックマークを外す", post_bookmarks_path(@post), method: :delete %>
+                <%= link_to post_bookmarks_path(@post), class: 'btn btn-outline-secondary btn-block', method: :delete do %>
+                  <i class="fas fa-bookmark"></i>
                 <% end %>
-              </td>
-              <td>
-                <!--投稿内容-->
-                <%= @post.body %>
-              </td>
-              <td>
-                <!--投稿編集ボタン-->
-                <% if @post.customer == current_customer %>
-                  <%= link_to 'Edit', edit_post_path(@post.id), class: 'btn btn-sm btn-success' %>
+              <% else %>
+                <%#= link_to "ブックマーク", post_bookmarks_path(@post), method: :post %>
+                <%= link_to post_bookmarks_path(@post), class: 'btn btn-outline-secondary btn-block', method: :post do %>
+                  <i class="far fa-bookmark"></i>
                 <% end %>
-              </td>
-              <td>
-                <!--投稿削除ボタン-->
-                <% if @post.customer == current_customer %>
-                  <%= link_to 'Destroy', post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: 'btn btn-sm btn-danger' %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <h5 class="nav-item card-title md-0" style="font-weight: bold;">
+            <%= @post.title %>
+          </h5>
+          <p>
+            <%= @post.body %>
+          </p>
+          <!--投稿画像-->
+          <%= image_tag @post.get_front_image(200,400) %>
+          <ul class="nav nav-stack py-3 small">
+            <li class="row">
+              <!--@postで１つの投稿を選出して、tags（Tag.allと同じ意味)で投稿に連なったタグをすべて表示する。-->
+              <h6>タグ:　</h6>
+              <% @post.tags.each do |tag| %>
+                <p style="margin-right: 20px;">
+                  <%= tag.tag_name %>
+                </p>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+        <div class="card-footer"></div>
+        <table class="table">
+          <tbody>
+              <tr>
+                <!--ブックマーク登録機能-->
+                <% if @post.bookmarked_by?(current_customer) %>
+                  <td>
+                    <%#= link_to "ブックマークを外す", post_bookmarks_path(@post), method: :delete %>
+                    <%= link_to post_bookmarks_path(@post), class: 'btn btn-outline-secondary btn-block', method: :delete do %>
+                      <i class="fas fa-bookmark"></i>
+                    <% end %>
+                  </td>
+                <% else %>
+                  <td>
+                    <%#= link_to "ブックマーク", post_bookmarks_path(@post), method: :post %>
+                    <%= link_to post_bookmarks_path(@post), class: 'btn btn-outline-secondary btn-block', method: :post do %>
+                      <i class="far fa-bookmark"></i>
+                    <% end %>
+                  </td>
                 <% end %>
-              </td>
-            </tr>
-        </tbody>
-      </table>
+                <td>
+                  <!--投稿者の名前-->
+                  <%= link_to customers_my_page_path do %>
+                    <%= image_tag @customer.get_profile_image(100,100) %><br>
+                    <%= @customer.name %>
+                  <% end %>
+                </td>
+                <td>
+                  <!--投稿タイトル-->
+                  <%= link_to post_path(@post) do %>
+                    <%= @post.title %>
+                  <% end %>
+                </td>
+                <td>
+                  <!--投稿内容-->
+                  <%= @post.body %>
+                </td>
+                <td>
+                  <!--投稿編集ボタン-->
+                  <% if @post.customer == current_customer %>
+                    <%= link_to 'Edit', edit_post_path(@post.id), class: 'btn btn-sm btn-success' %>
+                  <% end %>
+                </td>
+                <td>
+                  <!--投稿削除ボタン-->
+                  <% if @post.customer == current_customer %>
+                    <%= link_to 'Destroy', post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: 'btn btn-sm btn-danger' %>
+                  <% end %>
+                </td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
   <div class="row">
