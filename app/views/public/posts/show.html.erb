@@ -12,6 +12,7 @@
         <div class="card-header border-0 pd-0">
           <div class="d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center">
+              <!--プロフィール-->
               <div class="avatar avatar-story me-2">
                 <%= link_to customers_my_page_path do %>
                   <%= image_tag @customer.get_profile_image(100,100) %><br>
@@ -19,13 +20,18 @@
               </div>
               <div>
                 <div class="nav nav-divider">
-                  <h6 class="nav-item card-title md-0">
+                  <h6 class="nav-item card-title md-0" style="padding: 0 5px 0 15px;">
                     <%= link_to customers_my_page_path do %>
                       <%= @customer.name %>
                     <% end %>
                   </h6>
-                  <span class="nav-item small">投稿からの時間</span>
+                  <!--<span class="nav-item small">-->
+                    <%#= @post.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+                  <!--</span>-->
                 </div>
+                <span class="nav-item small" style="padding-left: 15px;">
+                  <%= @post.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+                </span>
                 <p class="md-0 small">
                   <%= @customer.introduction %>
                 </p>
@@ -47,6 +53,8 @@
             </div>
           </div>
         </div>
+        
+        <!--記事内容-->
         <div class="card-body">
           <h5 class="nav-item card-title md-0" style="font-weight: bold;">
             <%= @post.title %>
@@ -55,7 +63,7 @@
             <%= @post.body %>
           </p>
           <!--投稿画像-->
-          <%= image_tag @post.get_front_image(200,400) %>
+          <%= image_tag @post.get_front_image(600,270), class: 'card-img' %>
           <ul class="nav nav-stack py-3 small">
             <li class="row">
               <!--@postで１つの投稿を選出して、tags（Tag.allと同じ意味)で投稿に連なったタグをすべて表示する。-->
@@ -67,120 +75,77 @@
               <% end %>
             </li>
           </ul>
+          <div>
+            <!--投稿編集ボタン-->
+            <% if @post.customer == current_customer %>
+              <%= link_to edit_post_path(@post.id), class: 'btn btn-sm btn-success' do %>
+                <i class="fas fa-edit" title="編集する"></i>
+              <% end %>
+            <% end %>
+            <!--投稿削除ボタン-->
+            <% if @post.customer == current_customer %>
+              <%= link_to post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: 'btn btn-sm btn-danger' do %>
+                <i class="fas fa-trash-alt" title="削除する"></i>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="d-flex md-3" style="margin-top: 15px;">
+            <div class="avatar avatar-xs me-2">
+              <%= link_to customers_my_page_path do %>
+                <%= image_tag @customer.get_profile_image(50,50), class: 'avatar avatar-xs me-2' %><br>
+              <% end %>
+            </div>
+            <div class="w-100">
+              <%= form_with model:[@post, @comment] do |f| %>
+                <%= f.text_area :comment_content, placeholder: "コメントをここに記入", class: 'form-control pe-4 bg-light' %>
+                <%# f.hidden_field :post_id, value: @post.id %>
+                <%= f.submit '送信', class: 'btn btn-success', style: 'margin-top: 10px;', title: "コメントを送信する" %>
+              <% end %>
+            </div>
+          </div>
+
+          <!--コメント内容-->
+          <ul class="comment-wrap list-unstyled" style="margin-top: 15px;">
+          <% @comments.each do |comment| %>
+            <li class="comment-item">
+              <div class="d-flex position-relative">
+                <div class="avatar avatar-xs">
+                  <%= link_to customers_my_page_path do %>
+                    <%= image_tag comment.customer.get_profile_image(50,50), class: 'avatar avatar-xs me-2' %><br>
+                  <% end %>
+                </div>
+                <div class="ms-2">
+                  <div class="bg-light rounded-start-top-0 p-3 rounded">
+                    <div class="d-flex justify-content-between">
+                      <p class="mb-1">
+                        <%= comment.customer.name %>
+                      </p>
+                      <small class="ms-2">
+                        <%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+                      </small>
+                      <%= link_to post_comment_path(comment.post.id, comment.id), method: :get do %>
+                        <i class="fas fa-search-plus" title="コメントを拡大する"></i>
+                      <% end %>
+                    </div>
+                    <p class="small md-0">
+                      <%= comment.comment_content %>
+                    </p>
+                    <!--ルーティングをネストしている場合は引数2つ必要-->
+                    <% if comment.customer == current_customer %>
+                      <%= link_to post_comment_path(comment.post.id, comment.id), method: :delete, "data-confirm" => "コメントを削除しますか？", class: 'btn btn-sm btn-danger' do %>
+                        <i class="fas fa-trash-alt" title="コメントを削除する"></i>
+                      <% end %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </li>
+          <% end %>
+          </ul>
         </div>
         <div class="card-footer"></div>
-        <table class="table">
-          <tbody>
-              <tr>
-                <!--ブックマーク登録機能-->
-                <% if @post.bookmarked_by?(current_customer) %>
-                  <td>
-                    <%#= link_to "ブックマークを外す", post_bookmarks_path(@post), method: :delete %>
-                    <%= link_to post_bookmarks_path(@post), class: 'btn btn-outline-secondary btn-block', method: :delete do %>
-                      <i class="fas fa-bookmark"></i>
-                    <% end %>
-                  </td>
-                <% else %>
-                  <td>
-                    <%#= link_to "ブックマーク", post_bookmarks_path(@post), method: :post %>
-                    <%= link_to post_bookmarks_path(@post), class: 'btn btn-outline-secondary btn-block', method: :post do %>
-                      <i class="far fa-bookmark"></i>
-                    <% end %>
-                  </td>
-                <% end %>
-                <td>
-                  <!--投稿者の名前-->
-                  <%= link_to customers_my_page_path do %>
-                    <%= image_tag @customer.get_profile_image(100,100) %><br>
-                    <%= @customer.name %>
-                  <% end %>
-                </td>
-                <td>
-                  <!--投稿タイトル-->
-                  <%= link_to post_path(@post) do %>
-                    <%= @post.title %>
-                  <% end %>
-                </td>
-                <td>
-                  <!--投稿内容-->
-                  <%= @post.body %>
-                </td>
-                <td>
-                  <!--投稿編集ボタン-->
-                  <% if @post.customer == current_customer %>
-                    <%= link_to 'Edit', edit_post_path(@post.id), class: 'btn btn-sm btn-success' %>
-                  <% end %>
-                </td>
-                <td>
-                  <!--投稿削除ボタン-->
-                  <% if @post.customer == current_customer %>
-                    <%= link_to 'Destroy', post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: 'btn btn-sm btn-danger' %>
-                  <% end %>
-                </td>
-              </tr>
-          </tbody>
-        </table>
       </div>
     </div>
   </div>
-  <div class="row">
-    <!--投稿画像-->
-    <%= image_tag @post.get_front_image(200,400) %>
-  </div>
-  <div class="row">
-    <!--@postで１つの投稿を選出して、tags（Tag.allと同じ意味)で投稿に連なったタグをすべて表示する。-->
-    <h3>タグ:　</h3>
-    <% @post.tags.each do |tag| %>
-      <h3 style="margin-right: 20px;">
-        <%= tag.tag_name %>
-      </h3>
-    <% end %>
-  </div>
-
-  <!--コメント機能欄-->
-  <div class="comment-container">
-
-    <h3>コメントをする</h3>
-    <%#= form_with(model: [@post, @comment], url: post_comments_path, method: :post) do |f| %>
-    <%= form_with model:[@post, @comment] do |f| %>
-      <%= f.text_area :comment_content, placeholder: "コメントをここに記入", class: 'form-control' %>
-      <%# f.hidden_field :post_id, value: @post.id %>
-      <%= f.submit 'コメントする', class: 'btn btn-success' %>
-    <% end %>
-
-    <h3>コメント一覧</h3>
-    <% @comments.each do |comment| %>
-      <table class="table table-hover table-inverse">
-        <thead>
-          <tr>
-            <th>
-              <%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
-              <%= image_tag comment.customer.get_profile_image(20,40) %>
-              <%= comment.customer.name %>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <%= comment.comment_content %>
-            </td>
-            <td>
-              <!--ルーティングをネストしている場合は引数2つ必要-->
-              <% if comment.customer == current_customer %>
-                <%= link_to 'Destroy', post_comment_path(comment.post.id, comment.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: 'btn btn-sm btn-danger' %>
-              <% end %>
-            </td>
-            <td>
-              <%= link_to post_comment_path(comment.post.id, comment.id), method: :get do %>
-                <i class="fas fa-search-plus"></i>
-              <% end %>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    <% end %>
-
-  </div>
-
 </div>
+
