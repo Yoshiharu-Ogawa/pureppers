@@ -41,6 +41,14 @@ h1 {
   padding-bottom : 30px;
 }
 
+.header-logo {
+  font-family: 'Indie Flower', cursive;
+}
+
+.welcome-message {
+  font-family: 'Kaisei Opti', serif;
+}
+
 .sidebar {
   /*border-right: 1px solid black;*/
   background-color: white;

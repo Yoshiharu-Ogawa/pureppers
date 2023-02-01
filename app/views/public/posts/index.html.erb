@@ -1,30 +1,41 @@
 <h1 class="headline" style="border-bottom: 3px solid black; padding-bottom: 5px; margin-bottom: 30px;">
    All Lists
 </h1>
-<div class="container">
-  <table class="table table-hover table-inverse">
-    <thead>
-      <tr>
-        <th>投稿者名</th>
-        <th>Title</th>
-        <th>Opinion</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-    <% @stock_posts.each do |posts| %>
-      <tr>
-        <td>
-          <%= posts.customer.name %>
-        </td>
-        <td>
-          <%= link_to post_path(posts.id) do %>
-            <%= posts.title %>
-          <% end %>
-        </td>
-        <td>
-          <%= posts.body %>
-        </td>
-      </tr>
-    <% end %>
-  </table>
+
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <% @stock_posts.each do |pos| %>
+        <div class="col">
+          <div class="card shadow-sm">
+            <%= link_to post_path(pos.id) do %>
+              <%= image_tag pos.get_front_image(600,270), class: 'bd-placeholder-img card-img-top', style: 'width: 100%; height: 225px;' %>
+            <% end %>
+          </div>
+          <div class="card-body" style="border: 1px solid #DDD;">
+            <!--<p class="card-text">-->
+              <%#= pos.body %>
+            <!--</p>-->
+            <%#= pos.customer.name %>
+            <h5 class="card-title" style="font-weight: bold; color: black;">
+              <%= link_to post_path(pos.id), style: 'color: black;' do %>
+                <%= pos.title %>
+              <% end %>
+            </h5>
+            <div class="d-flex justify-content-between align-items-center">
+              <% pos.tags.each do |tag| %>
+                <p style="margin-right: 5px;">
+                  <%= tag.tag_name %>
+                </p>
+              <% end %>
+              <small>
+                <%= pos.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+              </small>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
+

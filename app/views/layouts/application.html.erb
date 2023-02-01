@@ -13,11 +13,11 @@
   <body>
     <header class="fixed-top">
       <nav class="navbar navbat-expand-md navbar-dark fixed-top bg-dark;" style=" z-index: 9999; background-color: black;">
-        <div class="header-logo" style="border: 1px solid black; padding: 5px; margin-left: 5%;">
-          <%= link_to 'PREPPERS!', root_path %>
-        </div>
+        <h2 class="header-logo" style="border: 1px solid black; padding: 5px; margin-left: 5%;">
+          <%= link_to 'PREPPERS!', root_path, style: 'color: white;' %>
+        </h2>
         <% if customer_signed_in? %>
-          <div style=" color: white;">
+          <div class="welcome-message" style=" color: white;">
             ようこそ、<%= current_customer.name %>さん!
           </div>
         <% end %>
