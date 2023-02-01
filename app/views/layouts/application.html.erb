@@ -6,6 +6,10 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Indie+Flower&family=Kaisei+Opti&family=Sassy+Frass&display=swap" rel="stylesheet">
+
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -30,86 +34,61 @@
             <% unless signed_in? %>
             <!--誰もログインしていないときに表示-->
             <ul>
-              <!--<button type="button" class="btn btn-outline-secondary">-->
-                <li class="nav-item">
-                  <%= link_to "About", about_path %>
-                </li>
-              <!--</button>-->
-              <!--<button type="button" class="btn btn-outline-secondary">-->
-                <li class="nav-item">
-                  <%= link_to "ゲストログイン（閲覧）", homes_guest_sign_in_path, method: :post %>
-                </li>
-              <!--</button>-->
-              <!--<button type="button" class="btn btn-outline-secondary">-->
-                <li class="nav-item">
-                  <%= link_to "新規登録", new_customer_registration_path %>
-                </li>
-              <!--</button>-->
-              <!--<button type="button" class="btn btn-outline-secondary">-->
-                <li class="nav-item">
-                  <%= link_to "ログイン", new_customer_session_path %>
-                </li>
-              <!--</button>-->
+              <li class="nav-item header-list">
+                <%= link_to "投稿集", posts_path, class: 'header-list' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "About", about_path, class: 'header-list' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "ゲストログイン（閲覧）", homes_guest_sign_in_path, method: :post, class: 'header-list' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "新規登録", new_customer_registration_path, class: 'header-list' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "ログイン", new_customer_session_path, class: 'header-list' %>
+              </li>
             </ul>
             <% end %>
 
             <% if admin_signed_in? %>
             <!--管理者側表示-->
             <ul>
-              <!--<button type="button" class="btn btn-outline-secondary admin-buttom">-->
-                <li class="nav-item">
-                  <%= link_to 'ユーザー管理', admin_customers_path, method: :get %>
-                </li>
-              <!--</button>-->
-              <!--<button type="button" class="btn btn-outline-secondary admin-buttom">-->
-                <li class="nav-item">
-                  <%= link_to 'コメント一括管理', admin_comments_path, method: :get %>
-                </li>
-              <!--</button>-->
-              <!--<button type="button" class="btn btn-outline-secondary admin-buttom">-->
-                <li class="nav-item">
-                  <%#= link_to "コメント一覧",  %>
-                </li>
-              <!--</button>-->
-              <!--<button type="button" class="btn btn-outline-secondary admin-buttom">-->
-              <!--  <li class="nav-item">-->
-                  <%#= link_to "ジャンル一覧", admin_genres_path %>
-              <!--  </li>-->
-              <!--</button>-->
-              <!--<button type="button" class="btn btn-outline-secondary admin-buttom">-->
-                <li class="nav-item">
-                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-                </li>
-              <!--</button>-->
+              <li class="nav-item">
+                <%= link_to 'ユーザー管理', admin_customers_path, method: :get, class: 'header-list' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'コメント一括管理', admin_comments_path, method: :get, class: 'header-list' %>
+              </li>
+              <li class="nav-item">
+                <%#= link_to "コメント一覧",  %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'header-list' %>
+              </li>
             </ul>
             <% end %>
 
             <% if customer_signed_in? %>
             <!--会員がログインしているときに表示-->
-            <!--<nav>-->
             <ul>
-              <!--<button type="button" class="btn btn-outline-secondary btn-sm">-->
-                <li class="nav-item nav-link">
-                  <%= link_to "マイページ", customers_my_page_path %>
-                </li>
-              <!--</button>-->
-              <!--<button type="button" class="btn btn-outline-secondary btn-sm">-->
-                <li class="nav-item nav-link">
-                  <%= link_to "投稿する", new_post_path %>
-                </li>
-              <!--</button>-->
-              <!--<button type="button" class="btn btn-outline-secondary btn-sm">-->
-                <li class="nav-item nav-link">
-                  <%= link_to "ブックマーク", bookmarks_path, method: :get %>
-                </li>
-              <!--</button>-->
-              <!--<button type="button" class="btn btn-outline-secondary btn-sm">-->
-                <li class="nav-item nav-link">
-                  <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-                </li>
-              <!--</button>-->
+              <li class="nav-item">
+                <%= link_to "投稿集", posts_path, class: 'header-list' %>
+              </li>
+              <li class="nav-item nav-link">
+                <%= link_to "マイページ", customers_my_page_path, class: 'header-list' %>
+              </li>
+              <li class="nav-item nav-link">
+                <%= link_to "投稿する", new_post_path, class: 'header-list' %>
+              </li>
+              <li class="nav-item nav-link">
+                <%= link_to "ブックマーク", bookmarks_path, method: :get, class: 'header-list' %>
+              </li>
+              <li class="nav-item nav-link">
+                <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'header-list' %>
+              </li>
             </ul>
-            <!--</nav>-->
             <nav style="display: inline-block;">
             </nav>
             <% end %>
