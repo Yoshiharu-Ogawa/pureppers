@@ -117,3 +117,7 @@ h1 {
 .user-info th{
   display: inline-block;
 }
+
+.headline {
+  font-family: 'IBM Plex Serif', serif;
+}

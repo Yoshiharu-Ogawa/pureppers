@@ -5,7 +5,9 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @stock_posts = Post.all
+    # @stock_posts = Post.all
+    #created_atは作成日時　descは降順 ascは昇順
+    @stock_posts = Post.order(created_at: :desc)
   end
 
   def show

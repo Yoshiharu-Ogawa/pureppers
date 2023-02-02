@@ -24,15 +24,15 @@
             </h5>
             <div class="d-flex justify-content-between align-items-center">
               <% pos.tags.each do |tag| %>
-                <p style="margin-right: 5px;">
+                <p style="margin-right: 5px; font-size: small;">
                   <%= tag.tag_name %>
                 </p>
               <% end %>
-              <small>
-                <%= pos.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
-              </small>
             </div>
           </div>
+          <small>
+            <%= pos.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+          </small>
         </div>
       <% end %>
     </div>

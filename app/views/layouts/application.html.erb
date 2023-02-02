@@ -8,7 +8,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Indie+Flower&family=Kaisei+Opti&family=Sassy+Frass&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Aboreto&family=IBM+Plex+Serif:ital,wght@1,300&family=Indie+Flower&family=Kaisei+Opti&family=Sassy+Frass&display=swap" rel="stylesheet">
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -79,6 +79,9 @@
               <li class="nav-item nav-link">
                 <%= link_to "マイページ", customers_my_page_path, class: 'header-list' %>
               </li>
+              <li class="nav-item">
+                <%= link_to "About（サイト取り扱い説明書）", about_path, class: 'header-list' %>
+              </li>
               <li class="nav-item nav-link">
                 <%= link_to "投稿する", new_post_path, class: 'header-list' %>
               </li>
@@ -106,8 +109,9 @@
     </main>
 
     <footer class="fixed-bottom">
-
+      <p style="color: white; text-align: center;">CopyRight 2022 Y-Ogawa PREPPERS</p>
     </footer>
+
   <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
   <script>
     bsCustomFileInput.init();
