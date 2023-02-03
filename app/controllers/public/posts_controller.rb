@@ -45,7 +45,7 @@ class Public::PostsController < ApplicationController
     # if @stock_post.update(params[:posted_title, :posted_body])
     if @stock_post.update(post_params)
       flash[:notice] = "投稿の更新が完了しました。"
-      redirect_to posts_path
+      redirect_to post_path(@stock_post.id)
     else
       @stock_post_update = Post.find(params[:id])
       flash[:notice] = "投稿の更新に失敗しました。"
@@ -56,7 +56,7 @@ class Public::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to posts_path
+    redirect_to customers_my_page_path
   end
 
 
