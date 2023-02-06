@@ -1,6 +1,6 @@
 class Public::BookmarksController < ApplicationController
 
-  # before_action :authenticate_customer!
+  before_action :authenticate_customer!
 
   def index
     # ログインユーザーに紐づけされたブックマーク
