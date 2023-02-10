@@ -1,27 +1,36 @@
-ここはブックマークのインデックス
+<caption>ブックマーク一覧</caption>
 
-<table>
-  <caption>ブックマーク一覧</caption>
-  <thead>
-    <tr>
-      <th>投稿者名</th>
-      <th>タイトル</th>
-      <th>本文</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @bookmarks.each do |bookmark| %>
+
+<div class="container">
+  <table class="table table-hover table-inverse">
+    <thead>
       <tr>
-        <td>
-          <%= bookmark.post.customer.name %>
-        </td>
-        <td>
-          <%= link_to post_path(bookmark.post) do %>
-            <%= bookmark.post.title %>
-          <% end %>
-        </td>
-        <td><%= bookmark.post.body %></td>
+        <th>投稿者名</th>
+        <th>タイトル</th>
+        <th>本文</th>
+        <th>ブックマーク解除</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @bookmarks.each do |bookmark| %>
+        <tr>
+          <td>
+            <%= bookmark.post.customer.name %>
+          </td>
+          <td>
+            <%= link_to post_path(bookmark.post) do %>
+              <%= bookmark.post.title %>
+            <% end %>
+          </td>
+          <td><%= bookmark.post.body %></td>
+          <td>
+            <!--ブックマーク解除-->
+            <%= link_to post_bookmarks_path(bookmark), class: 'btn btn-outline-secondary btn-block', method: :delete do %>
+              <div>ブックマークを外す</div>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

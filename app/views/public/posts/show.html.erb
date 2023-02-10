@@ -33,7 +33,7 @@
                 <span class="nav-item small" style="padding-left: 15px;">
                   <%= @post.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
                 </span>
-                <p class="md-0 small">
+                <p class="md-0 small" style="padding-left: 15px;">
                   <%= @customer.introduction %>
                 </p>
               </div>
@@ -90,10 +90,12 @@
               <% end %>
             <% end %>
           </div>
+
+          <!--コメント投稿-->
           <div class="d-flex md-3" style="margin-top: 15px;">
-            <div class="avatar avatar-xs me-2">
+            <div class="avatar avatar-xs me-2 trim-image-to-circle" style="margin-right: 5px;">
               <%= link_to customers_my_page_path do %>
-                <%= image_tag @customer.get_profile_image(50,50), class: 'avatar avatar-xs me-2' %><br>
+                <%= image_tag @customer.get_profile_image(80,80), class: 'avatar avatar-xs me-2 trim-image-to-circle' %><br>
               <% end %>
             </div>
             <div class="w-100">
