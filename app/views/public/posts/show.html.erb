@@ -112,9 +112,9 @@
           <% @comments.each do |comment| %>
             <li class="comment-item" style="margin-bottom: 5px;">
               <div class="d-flex position-relative">
-                <div class="avatar avatar-xs">
+                <div class="avatar avatar-xs trim-image-to-circle">
                   <%= link_to customers_my_page_path do %>
-                    <%= image_tag comment.customer.get_profile_image(50,50), class: 'avatar avatar-xs me-2' %><br>
+                    <%= image_tag comment.customer.get_profile_image(80,80), class: 'avatar avatar-xs me-2 trim-image-to-circle' %><br>
                   <% end %>
                 </div>
                 <div class="ms-2">
