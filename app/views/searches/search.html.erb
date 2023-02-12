@@ -30,7 +30,9 @@
       <% @tag_posts.each do |tag_post| %>
         <tr>
           <td>
-            <%= tag_post.title %>
+            <%= link_to post_path(tag_post.id) do %>
+              <%= tag_post.title %>
+            <% end %>
           </td>
           <td>
             <% tag_post.tags.each do |tag| %>
