@@ -1,4 +1,4 @@
-# pureppers
+# preppers
 
 ## サイト概要
 - 備蓄品を買い備える人たちの交流の場です。
@@ -30,8 +30,7 @@ https://docs.google.com/spreadsheets/d/1Az5XhkHc3cQKaV_8UoIVaxQIB9lr33ftQe7TM2l4
 - IDE：Cloud9
 
 ## 使用素材
-- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
-- 使用しない場合は、使用素材の項目をREADMEから削除してください。
+- DesignEvo logo maker https://www.designevo.com/
 
 
 This README would normally document whatever steps are necessary to get the
