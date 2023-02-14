@@ -2,13 +2,27 @@
    All Lists
 </h1>
 
+<% unless customer_signed_in? %>
+  <small>
+    ※各記事の詳細を見る場合は
+    <%= link_to new_customer_session_path do %>
+      ログイン
+    <% end %>
+    してください。
+  </small>
+<% end %>
+
 <div class="album py-5 bg-light">
   <div class="container">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
       <% @stock_posts.each do |pos| %>
         <div class="col">
           <div class="card shadow-sm">
-            <%= link_to post_path(pos.id) do %>
+            <% if customer_signed_in? %>
+              <%= link_to post_path(pos.id) do %>
+                <%= image_tag pos.get_front_image(600,270), class: 'bd-placeholder-img card-img-top', style: 'width: 100%; height: 225px;' %>
+              <% end %>
+            <% elsif %>
               <%= image_tag pos.get_front_image(600,270), class: 'bd-placeholder-img card-img-top', style: 'width: 100%; height: 225px;' %>
             <% end %>
           </div>
@@ -18,7 +32,11 @@
             <!--</p>-->
             <%#= pos.customer.name %>
             <h5 class="card-title" style="font-weight: bold; color: black;">
-              <%= link_to post_path(pos.id), style: 'color: black;' do %>
+              <% if customer_signed_in? %>
+                <%= link_to post_path(pos.id), style: 'color: black;' do %>
+                  <%= pos.title %>
+                <% end %>
+              <% elsif %>
                 <%= pos.title %>
               <% end %>
             </h5>

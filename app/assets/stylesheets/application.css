@@ -41,6 +41,10 @@ h1 {
   padding-bottom : 30px;
 }
 
+ul {
+  list-style: none;
+}
+
 /*.header-logo {*/
 /*  font-family: 'Indie Flower', cursive;*/
 /*}*/
