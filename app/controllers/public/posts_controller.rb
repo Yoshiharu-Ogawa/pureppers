@@ -8,6 +8,7 @@ class Public::PostsController < ApplicationController
     # @stock_posts = Post.all
     #created_atは作成日時　descは降順 ascは昇順
     @stock_posts = Post.order(created_at: :desc)
+    
   end
 
   def show

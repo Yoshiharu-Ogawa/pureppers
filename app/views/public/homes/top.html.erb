@@ -22,7 +22,8 @@
   <div class="row py-lg-5">
     <div class="col-lg-6 col-md-8 mx-auto">
       <h1 class="fw-light welcome-message">PREPPERS</h1>
-      <p class="lead text-muted">xxxxxxxxx xxxxx xxx xxxxxxx xxxxx xxx xxxxxxxxx xxxxxxxxx xxxxxxx, xxx xxxxxxx, xxx. xxxx xx xxxxx xxx xxxxx, xxx xxxx xxx xxxxx xx xxxxx xxxx xxxxxx xxxx xxxx xx xxxxxxxxx.</p>
+      <p class="lead text-muted">
+        xxxxxxxxx xxxxx xxx xxxxxxx xxxxx xxx xxxxxxxxx xxxxxxxxx xxxxxxx, xxx xxxxxxx, xxx. xxxx xx xxxxx xxx xxxxx, xxx xxxx xxx xxxxx xx xxxxx xxxx xxxxxx xxxx xxxx xx xxxxxxxxx.</p>
       <p>
         <!--<a href="#" class="btn btn-primary my-2">Main call to action</a>-->
         <!--<a href="#" class="btn btn-secondary my-2">Secondary action</a>-->
@@ -46,5 +47,8 @@
 </section>
 
 <div class="album py-5 bg-light">
-
+  <h1 class="headline" style="border-bottom: 3px solid black; padding-bottom: 5px; margin-bottom: 30px;">
+   NEW!
+  </h1>
+  <%= render 'public/shared/all_lists', stock_posts: @stock_posts %>
 </div>

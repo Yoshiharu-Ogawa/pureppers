@@ -9,6 +9,10 @@ class Public::HomesController < ApplicationController
     redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
   end
 
+  def top
+    @stock_posts = Post.limit(3).order(created_at: :desc)
+  end
+
 
 
 end
