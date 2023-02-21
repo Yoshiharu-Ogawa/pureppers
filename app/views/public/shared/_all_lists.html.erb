@@ -20,10 +20,10 @@
             <h5 class="card-title" style="font-weight: bold; color: black;">
               <% if customer_signed_in? %>
                 <%= link_to post_path(pos.id), style: 'color: black;' do %>
-                  <%= pos.title %>
+                  <%= pos.title.truncate(15) %>
                 <% end %>
               <% elsif %>
-                <%= pos.title %>
+                <%= pos.title.truncate(15) %>
               <% end %>
             </h5>
             <div class="d-flex justify-content-between align-items-center">
@@ -38,7 +38,7 @@
             <%= pos.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
           </small>
           <p>
-            <small><%= pos.customer.name %></small>
+            <small><%= pos.customer.name.truncate(30) %></small>
           </p>
         </div>
       <% end %>

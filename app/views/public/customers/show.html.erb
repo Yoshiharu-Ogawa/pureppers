@@ -57,11 +57,11 @@
               <td></td>
               <td>
                 <%= link_to post_path(posts) do %>
-                  <%= posts.title %>
+                  <%= posts.title.truncate(15) %>
                 <% end %>
               </td>
               <td>
-                <%= posts.body %>
+                <%= posts.body.truncate(30) %>
               </td>
             </tr>
           <% end %>

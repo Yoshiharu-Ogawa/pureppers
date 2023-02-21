@@ -15,14 +15,14 @@
       <% @bookmarks.each do |bookmark| %>
         <tr>
           <td>
-            <%= bookmark.post.customer.name %>
+            <%= bookmark.post.customer.name.truncate(15) %>
           </td>
           <td>
             <%= link_to post_path(bookmark.post) do %>
-              <%= bookmark.post.title %>
+              <%= bookmark.post.title.truncate(15) %>
             <% end %>
           </td>
-          <td><%= bookmark.post.body %></td>
+          <td><%= bookmark.post.body.truncate(30) %></td>
           <td>
             <!--ブックマーク解除-->
             <%= link_to post_bookmarks_path(bookmark), class: 'btn btn-outline-secondary btn-block', method: :delete do %>
