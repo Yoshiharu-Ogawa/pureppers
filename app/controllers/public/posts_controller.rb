@@ -8,7 +8,7 @@ class Public::PostsController < ApplicationController
     # @stock_posts = Post.all
     #created_atは作成日時　descは降順 ascは昇順
     @stock_posts = Post.order(created_at: :desc)
-    
+
   end
 
   def show
@@ -30,15 +30,17 @@ class Public::PostsController < ApplicationController
   def create
     stock_post = Post.new(post_params)
     stock_post.customer_id = current_customer.id
+
     if stock_post.save
       flash[:notice] = "新規投稿をしました"
       # postのshowへリダイレクト
       redirect_to post_path(stock_post.id)
     else
-      @stock_post = Post.find(stock_post.id)
+      # @stock_post = Post.find(stock_post.id)
       flash[:notice] = "投稿に失敗しました　表示不可能な文字列や画像データの可能性があります。"
       render :new
     end
+
   end
 
   def update
@@ -48,7 +50,7 @@ class Public::PostsController < ApplicationController
       flash[:notice] = "投稿の更新が完了しました。"
       redirect_to post_path(@stock_post.id)
     else
-      @stock_post_update = Post.find(params[:id])
+      # @stock_post_update = Post.find(params[:id])
       flash[:notice] = "投稿の更新に失敗しました。"
       render :edit
     end

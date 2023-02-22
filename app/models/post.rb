@@ -9,12 +9,20 @@ class Post < ApplicationRecord
 
   has_one_attached :front_image
 
+  # バリデーション
+  validates :title, presence: true
+  validates :title, length: { minimum: 1, maximum: 30 }
+
+  validates :body, presence: true
+  validates :body, length: { minimum: 1, maximum: 500 }
+
   # bookmarked_by?(customer)を追加することで、
   # 既にブックマークしているかを検証します。
   def bookmarked_by?(customer)
     bookmarks.where(customer_id: customer).exists?
   end
 
+  # メインイメージの設定
   def get_front_image(width, height)
     unless front_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
