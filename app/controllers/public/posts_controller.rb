@@ -23,8 +23,13 @@ class Public::PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-    redirect_to customers_my_page_path
+    if @post.customer == current_customer
+      @post.destroy
+      redirect_to customers_my_page_path
+    else
+      flash[:notice] = "投稿者のアカウントでのみ削除・編集ができます。"
+      redirect_to customers_my_page_path
+    end
   end
 
   def create
@@ -46,21 +51,26 @@ class Public::PostsController < ApplicationController
   def update
     @stock_post = Post.find(params[:id])
     # if @stock_post.update(params[:posted_title, :posted_body])
-    if @stock_post.update(post_params)
-      flash[:notice] = "投稿の更新が完了しました。"
-      redirect_to post_path(@stock_post.id)
+    if @stock_post.customer == current_customer
+      if @stock_post.update(post_params)
+        flash[:notice] = "投稿の更新が完了しました。"
+        redirect_to post_path(@stock_post.id)
+      else
+        # @stock_post_update = Post.find(params[:id])
+        flash[:notice] = "投稿の更新に失敗しました。"
+        render :edit
+      end
     else
-      # @stock_post_update = Post.find(params[:id])
-      flash[:notice] = "投稿の更新に失敗しました。"
+      flash[:notice] = "投稿者のアカウントでのみ削除・編集ができます。"
       render :edit
     end
   end
 
-  def destroy
-    @post = Post.find(params[:id])
-    @post.destroy
-    redirect_to customers_my_page_path
-  end
+  # def destroy
+  #   @post = Post.find(params[:id])
+  #   @post.destroy
+  #   redirect_to customers_my_page_path
+  # end
 
 
   def edit
