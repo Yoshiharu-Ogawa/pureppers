@@ -67,6 +67,12 @@
                 <%= link_to 'コメント一括管理', admin_comments_path, method: :get, class: 'header-list' %>
               </li>
               <li class="nav-item">
+                <%= link_to "お知らせ作成", new_admin_announcement_path, method: :get, class: 'header-list' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "お知らせ一覧", admin_announcements_path, method: :get, class: 'header-list' %>
+              </li>
+              <li class="nav-item">
                 <%#= link_to "コメント一覧",  %>
               </li>
               <li class="nav-item">

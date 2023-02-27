@@ -45,6 +45,8 @@ devise_for :admin, controllers: {
 
     resources :comments, only: [:index, :show, :destroy]
 
+    resources :announcements
+
   end
 
   get 'search' => 'searches#search'

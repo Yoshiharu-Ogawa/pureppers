@@ -66,13 +66,6 @@ class Public::PostsController < ApplicationController
     end
   end
 
-  # def destroy
-  #   @post = Post.find(params[:id])
-  #   @post.destroy
-  #   redirect_to customers_my_page_path
-  # end
-
-
   def edit
     @post = Post.find(params[:id])
     if @post.customer == current_customer

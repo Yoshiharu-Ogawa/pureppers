@@ -1,0 +1,11 @@
+<h2>お知らせ入力欄</h2>
+
+<%= form_with(model: @announcement, url: admin_announcements_path) do |form| %>
+  <%= form.label :title %>
+  <%= form.text_field :title %>
+
+  <%= form.label :content %>
+  <%= form.text_area :content %>
+
+  <%= form.submit "投稿する" %>
+<% end %>
