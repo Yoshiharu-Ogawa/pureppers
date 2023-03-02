@@ -22,9 +22,19 @@
   <div class="row py-lg-5">
     <div class="col-lg-6 col-md-8 mx-auto">
       <h1 class="fw-light welcome-message">PREPPERS</h1>
-      <p class="lead text-muted">
-        xxxxxxxxx xxxxx xxx xxxxxxx xxxxx xxx xxxxxxxxx xxxxxxxxx xxxxxxx, xxx xxxxxxx, xxx. xxxx xx xxxxx xxx xxxxx, xxx xxxx xxx xxxxx xx xxxxx xxxx xxxxxx xxxx xxxx xx xxxxxxxxx.</p>
-      <p>
+      <!--<p class="lead text-muted">-->
+      <!--  xxxxxxxxx xxxxx xxx xxxxxxx xxxxx xxx xxxxxxxxx xxxxxxxxx xxxxxxx, xxx xxxxxxx, xxx. xxxx xx xxxxx xxx xxxxx, xxx xxxx xxx xxxxx xx xxxxx xxxx xxxxxx xxxx xxxx xx xxxxxxxxx.</p>-->
+      <!--</p>-->
+      <% unless signed_in? %>
+        <p class="lead text-muted">
+          災害に備えるための情報交換サイト、PreppersCommunityへようこそ!一人で備えるのは難しい。プレッパーたちが集い、共に危機を乗り越えましょう。
+        </p>
+      <% end %>
+      <% if customer_signed_in? %>
+        <p class="lead text-muted">
+          <%= link_to "The Prepper's Rules", rules_path %>
+        </p>
+      <% end %>
         <!--<a href="#" class="btn btn-primary my-2">Main call to action</a>-->
         <!--<a href="#" class="btn btn-secondary my-2">Secondary action</a>-->
         <% unless signed_in? %>
@@ -41,7 +51,6 @@
           <%= link_to 'ユーザー管理', admin_customers_path, method: :get, class: 'btn btn-primary my-2' %>
           <%= link_to 'コメント一括管理', admin_comments_path, method: :get, class: 'btn btn-secondary my-2' %>
         <% end %>
-      </p>
     </div>
   </div>
 </section>

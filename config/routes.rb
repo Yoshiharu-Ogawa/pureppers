@@ -17,6 +17,7 @@ devise_for :admin, controllers: {
   scope module: :public do
     root to: 'homes#top'
     get 'about' => 'homes#about'
+    get 'rules' => 'homes#rules'
     post 'homes/guest_sign_in' => 'homes#new_guest'
 
     get 'customers/my_page' => 'customers#show'
