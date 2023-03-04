@@ -1,7 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <h4 class="page-title">会員一覧</h4>
+      <h4 class="page-title">ユーザー一覧</h4>
+      <p>ユーザーの総数: <%= @customers.count %></p>
+      <p>有効ユーザーの総数: <%= @valid_customers.count %></p>
+      <p>退会ユーザーの総数: <%= @invalid_customers.count %></p>
       <table class="table">
         <thead class="thead-color">
           <tr>

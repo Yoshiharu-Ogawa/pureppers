@@ -5,6 +5,8 @@ class Admin::CustomersController < ApplicationController
   def index
     # @customers = Customer.page(params[:page])
     @customers = Customer.all
+    @valid_customers = @customers.where(is_deleted: false)
+    @invalid_customers = @customers.where(is_deleted: true)
   end
 
   def show
