@@ -45,12 +45,24 @@ ul {
   list-style: none;
 }
 
+@media (max-width: 426px) {
+    .logo {
+      width: 150px;
+    }
+  }
+
 /*.header-logo {*/
 /*  font-family: 'Indie Flower', cursive;*/
 /*}*/
 
 .welcome-message {
   font-family: 'Kaisei Opti', serif;
+}
+
+@media (max-width: 426px) {
+  .welcome-message {
+  display: none;
+  }
 }
 
 .header-list {

@@ -22,7 +22,7 @@
         <!--</h2>-->
         <h2 style="margin: 0 5% 0 5%;">
           <%= link_to root_path, style: 'color: white;' do %>
-            <%= image_tag asset_path('logo.jpg') %>
+            <%= image_tag asset_path('logo.jpg'), class: 'logo' %>
           <% end %>
         </h2>
         <% if customer_signed_in? %>
