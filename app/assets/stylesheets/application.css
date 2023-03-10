@@ -115,6 +115,10 @@ ul {
 
 }
 
+.about-message p {
+  margin-right: 15px;
+}
+
 .about-message h3 {
   margin-bottom: 60px;
 }
