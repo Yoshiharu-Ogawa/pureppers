@@ -7,7 +7,25 @@
   <div class="row g-4">
     <%#= render partial: 'books/user_info', locals: { user: @book.user, post_book: @book_n } %>
     <!--<div class="col-md-8 offset-md-1">-->
-    <div class="col-md-12 col-lg-12 vstack gap-4">
+    <!--d-noneはdisplayを非表示にするため、d-lg-blockでdisplay設定を変更しないと、その後のcol-lg-4は表示されない-->
+    <div class="d-none d-lg-block col-lg-4">
+      <h2 style="margin-bottom: 15px;">投稿者</h2>
+      <p><%= image_tag @customer.get_profile_image(200,200) %></p>
+      <table class="table">
+        <tbody>
+          <tr></tr>
+          <tr class="user-info">
+            <th>name</th>
+            <th><%= @customer.name %></th>
+          </tr>
+          <tr class="user-info">
+            <th>introduction</th>
+            <th><%= @customer.introduction %></th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-12 col-lg-8 vstack gap-4">
       <h2>Book detail</h2>
       <div class="card">
         <div class="card-header border-0 pd-0">
