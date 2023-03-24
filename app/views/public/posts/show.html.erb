@@ -44,9 +44,6 @@
                       <%= @customer.name %>
                     <% end %>
                   </h6>
-                  <!--<span class="nav-item small">-->
-                    <%#= @post.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
-                  <!--</span>-->
                 </div>
                 <span class="nav-item small" style="padding-left: 15px;">
                   <%= @post.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
@@ -59,12 +56,10 @@
             <div class="bookmark">
               <!--ブックマーク登録機能-->
               <% if @post.bookmarked_by?(current_customer) %>
-                <%#= link_to "ブックマークを外す", post_bookmarks_path(@post), method: :delete %>
                 <%= link_to post_bookmarks_path(@post), class: 'btn btn-outline-secondary btn-block', method: :delete do %>
                   <i class="fas fa-bookmark"></i>
                 <% end %>
               <% else %>
-                <%#= link_to "ブックマーク", post_bookmarks_path(@post), method: :post %>
                 <%= link_to post_bookmarks_path(@post), class: 'btn btn-outline-secondary btn-block', method: :post do %>
                   <i class="far fa-bookmark"></i>
                 <% end %>
