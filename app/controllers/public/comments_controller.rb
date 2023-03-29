@@ -12,6 +12,12 @@ class Public::CommentsController < ApplicationController
     # end
   end
 
+  def update
+    comment = Comment.find_by(id: params[:id], post_id: params[:post_id])
+    comment.update(comment_content: "コメントが削除されました")
+    redirect_to request.referer
+  end
+
   def destroy
     # ルーティングをネストしている場合は引数2つ必要
     comment = Comment.find_by(id: params[:id], post_id: params[:post_id])
@@ -19,7 +25,7 @@ class Public::CommentsController < ApplicationController
     # 同じページをリダイレクト
     redirect_to request.referer
   end
-  
+
   def show
     @comment = Comment.find_by(id: params[:id], post_id: params[:post_id])
   end

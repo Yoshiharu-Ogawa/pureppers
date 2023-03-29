@@ -148,8 +148,15 @@
                     </p>
                     <!--ルーティングをネストしている場合は引数2つ必要-->
                     <% if comment.customer == current_customer %>
-                      <%= link_to post_comment_path(comment.post.id, comment.id), method: :delete, "data-confirm" => "コメントを削除しますか？", class: 'btn btn-sm btn-danger' do %>
-                        <i class="fas fa-trash-alt" title="コメントを削除する"></i>
+                      <!--コメントを削除したい場合に下記を使いdestroyメソッドを起動する-->
+                      <%#= link_to post_comment_path(comment.post.id, comment.id), method: :delete, "data-confirm" => "コメントを削除しますか？", class: 'btn btn-sm btn-danger' do %>
+                        <!--<i class="fas fa-trash-alt" title="コメントを削除する"></i>-->
+                      <%# end %>
+                      <!--コメントが削除された痕跡を残したい場合、下記を使いupdateメソッドを起動する-->
+                      <% if comment.comment_content != "コメントが削除されました" %>
+                        <%= link_to post_comment_path(comment.post.id, comment.id), method: :patch, "data-confirm" => "コメントを削除しますか？", class: 'btn btn-sm btn-danger' do %>
+                          <i class="fas fa-trash-alt" title="コメントを削除する"></i>
+                        <% end %>
                       <% end %>
                     <% end %>
                   </div>
