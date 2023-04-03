@@ -30,6 +30,10 @@ class Public::CommentsController < ApplicationController
     @comment = Comment.find_by(id: params[:id], post_id: params[:post_id])
   end
 
+  def delete_comments
+    @comments = Comment.delete_comments
+  end
+
   private
 
   def comment_params

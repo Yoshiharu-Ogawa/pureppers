@@ -1,0 +1,22 @@
+<h1>削除予定コメントいて一覧</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>投稿ID</th>
+      <th>投稿者名</th>
+      <th>コメント内容</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @comments.each do |comment| %>
+      <tr>
+        <td><%= comment.id %></td>
+        <td><%= comment.post_id %></td>
+        <td><%= comment.customer.name %></td>
+        <td><%= comment.comment_content %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

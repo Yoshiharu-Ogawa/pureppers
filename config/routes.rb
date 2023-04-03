@@ -45,6 +45,7 @@ devise_for :admin, controllers: {
     resources :customers, only: [:index, :show, :edit, :destroy]
 
     resources :comments, only: [:index, :show, :destroy]
+    get 'delete_comments' => 'comments#delete_comments'
 
     resources :announcements
 
