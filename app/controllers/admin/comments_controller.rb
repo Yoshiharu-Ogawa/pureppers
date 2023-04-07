@@ -11,6 +11,10 @@ class Admin::CommentsController < ApplicationController
     @comments = Comment.find(params[:id])
   end
 
+  def delete_comments
+    @comments = Comment.where(comment_content: 'コメントが削除されました')
+  end
+
   def destroy
     # ルーティングをネストしている場合は引数2つ必要
     # comment = Comment.find_by(id: params[:id], post_id: params[:post_id])
