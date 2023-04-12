@@ -1,24 +1,31 @@
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>タイトル</th>
-      <th>本文</th>
-      <th>作成日時</th>
-      <th>操作</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @announcements.each do |announcement| %>
-      <tr>
-        <td><%= announcement.id %></td>
-        <td><%= announcement.title %></td>
-        <td><%= announcement.content %></td>
-        <td><%= announcement.created_at %></td>
-        <td>
-          <%= link_to '削除', admin_announcement_path(announcement), method: :delete, data: { confirm: '本当に削除しますか？' } %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h4 class="page-title">コメント一覧</h4>
+        <table class="table">
+          <thead class="thead-color">
+            <tr>
+              <th>ID</th>
+              <th>タイトル</th>
+              <th>本文</th>
+              <th>作成日時</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @announcements.each do |announcement| %>
+              <tr>
+                <td><%= announcement.id %></td>
+                <td><%= announcement.title %></td>
+                <td><%= announcement.content %></td>
+                <td><%= announcement.created_at %></td>
+                <td>
+                  <%= link_to '削除', admin_announcement_path(announcement), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btm btn-danger' %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+    </div>
+  </div>
+</div>
